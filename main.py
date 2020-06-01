@@ -1,17 +1,17 @@
-#!/usr/bin/python3
+#!/usr/bin/python3.8
 # coding: utf-8
-from tkinter import *
+import tkinter as tk
 from tkinter import messagebox
 import tkinter.messagebox
 import string
 from random import randint, choice
 
 # Define the access password of this application
-user_password = '1234'
+user_password = '020315'
 folder = 'file/accounts.txt'
 
 # window creation and settings
-window = Tk()
+window = tk.Tk()
 window.withdraw()
 window.title('Stockage d\'identifiants')
 window.geometry("975x650")
@@ -27,17 +27,17 @@ class connect_window(object):
     attempts = 0
 
     def __init__(self, master):
-        top = self.top = Toplevel(master)
+        top = self.top = tk.Toplevel(master)
         top.title('Fenêtre de connexion')
         top.geometry('{}x{}'.format(350, 200))
         top.resizable(width=False, height=False)
         top.config(background='#353535')
-        self.l = Label(top,text=" Mot de Passe: ", font=('Courier', 20), bg='#353535', fg='white', justify=CENTER)
-        self.l.pack(expand=YES)
-        self.e = Entry(top, show='*', bg='#353535', fg='white', width=20, font=('Courier', 14))
+        self.l = tk.Label(top,text=" Mot de Passe: ", font=('Courier', 20), bg='#353535', fg='white', justify=tk.CENTER)
+        self.l.pack(expand=tk.YES)
+        self.e = tk.Entry(top, show='*', bg='#353535', fg='white', width=20, font=('Courier', 14))
         self.e.pack(pady=7)
-        self.b = Button(top, text='Connexion', bg='#353535', fg='white', command=self.cleanup, font=('Courier', 18))
-        self.b.pack(expand=YES)
+        self.b = tk.Button(top, text='Connexion', bg='#353535', fg='white', command=self.cleanup, font=('Courier', 18))
+        self.b.pack(expand=tk.YES)
 
     # Close the popup if the password and just otherwise display an error message
     def cleanup(self):
@@ -138,25 +138,25 @@ class entity_display:
             else:
                 decryptedP += chr(ord(letter) - 5)
 
-        self.label_site = Label(self.window, text=decryptedS, font=('Courier', 14), bg='#353535', fg='white', pady=5)
-        self.label_name = Entry(self.window, text=decryptedN, font=('Courier', 12), bg='#353535', fg='white', width=17)
-        self.label_name.delete(0, END)
+        self.label_site = tk.Label(self.window, text=decryptedS, font=('Courier', 14), bg='#353535', fg='white', pady=5)
+        self.label_name = tk.Entry(self.window, text=decryptedN, font=('Courier', 12), bg='#353535', fg='white', width=17)
+        self.label_name.delete(0, tk.END)
         self.label_name.insert(0, decryptedN)
-        self.label_email = Entry(self.window, text=decryptedE, font=('Courier', 12), bg='#353535', fg='white', width=30)
-        self.label_email.delete(0, END)
+        self.label_email = tk.Entry(self.window, text=decryptedE, font=('Courier', 12), bg='#353535', fg='white', width=30)
+        self.label_email.delete(0, tk.END)
         self.label_email.insert(0, decryptedE)
-        self.label_pass = Entry(self.window, text=decryptedP, font=('Courier', 12), bg='#353535', fg='white', width=15)
-        self.label_pass.delete(0, END)
+        self.label_pass = tk.Entry(self.window, text=decryptedP, font=('Courier', 12), bg='#353535', fg='white', width=15)
+        self.label_pass.delete(0, tk.END)
         self.label_pass.insert(0, decryptedP)
-        self.deleteButton = Button(self.window, text='X', fg='red', command=self.delete)
+        self.deleteButton = tk.Button(self.window, text='X', fg='red', command=self.delete)
 
     # Table layout
     def display(self):
-        self.label_site.grid(row=8 + self.i, column=0, padx=10, sticky=W)
-        self.label_name.grid(row=8 + self.i, column=1,padx=10, sticky=W)
+        self.label_site.grid(row=8 + self.i, column=0, padx=10, sticky=tk.W)
+        self.label_name.grid(row=8 + self.i, column=1,padx=10, sticky=tk.W)
         self.label_email.grid(row=8 + self.i, column=2, padx=10)
-        self.label_pass.grid(row=8 + self.i, column=3, padx=10, sticky=E)
-        self.deleteButton.grid(row=8 + self.i, column=4, padx=10, sticky=E)
+        self.label_pass.grid(row=8 + self.i, column=3, padx=10, sticky=tk.E)
+        self.deleteButton.grid(row=8 + self.i, column=4, padx=10, sticky=tk.E)
 
     # Delete the line requested by the user from the file
     def delete(self):
@@ -169,7 +169,7 @@ class entity_display:
             f = open(folder, 'r')
             lines = f.readlines()
             f.close()
-            
+
             login_select = self.site + ',' + self.name + ',' + self.email + ',' + self.password + ',' + '\n'
             lines.pop(lines.index(login_select))
 
@@ -199,7 +199,7 @@ def generate_password():
     punctuation = """!#-/@_?'=%$"""
     all_chars = string.ascii_letters + string.digits + punctuation
     password = "".join(choice(all_chars) for x in range(randint(8, 12)))
-    password_entry.delete(0, END)
+    password_entry.delete(0, tk.END)
     password_entry.insert(0, password)
 
 
@@ -249,64 +249,64 @@ def read_file():
 m = connect_window(window)
 
 # Create scrollbar to axe y and axe x
-scrollbar = Canvas(window, bg='#353535', width=2, height=300, bd=0, highlightthickness=0, scrollregion=(0, 0, 0, 1500))
-vbar = Scrollbar(window, orient="v",command=scrollbar.yview)
-vbar.pack(side=RIGHT, fill=Y)
+scrollbar = tk.Canvas(window, bg='#353535', width=2, height=300, bd=0, highlightthickness=0, scrollregion=(0, 0, 0, 1500))
+vbar = tk.Scrollbar(window, orient="v",command=scrollbar.yview)
+vbar.pack(side=tk.RIGHT, fill=tk.Y)
 scrollbar.configure(yscrollcommand=vbar.set)
-scrollbar.pack(side=TOP)
+scrollbar.pack(side=tk.TOP)
 
 # Create frame principal
-frame = Frame(bg='#353535')
+frame = tk.Frame(bg='#353535')
 
 # Create logo in the frame
-image = PhotoImage(file='assets/folder.png')
-canvas_1 = Canvas(frame, width=230, height=230, bg='#353535', bd=0, highlightthickness=0)
+image = tk.PhotoImage(file='assets/folder.png')
+canvas_1 = tk.Canvas(frame, width=230, height=230, bg='#353535', bd=0, highlightthickness=0)
 canvas_1.create_image(230/2, 230/2, image=image)
-canvas_1.grid(row=0, column=0, columnspan=4, sticky=N)
+canvas_1.grid(row=0, column=0, columnspan=4, sticky=tk.N)
 
 # Create label for login in the frame
-entity_label = Label(frame, text='Rentrer les identifiants ici bas:', font=('Courier', 20), bg='#353535', fg='white', pady=10)
+entity_label = tk.Label(frame, text='Rentrer les identifiants ici bas:', font=('Courier', 20), bg='#353535', fg='white', pady=10)
 entity_label.grid(column=1, row=1, columnspan=3)
-site_label = Label(frame, text='Site :', font=('Courier', 14), bg='#353535', fg='white', pady=5)
-site_label.grid(column=2, row=2, columnspan=1, padx=3, sticky=W)
-name_label = Label(frame, text='Pseudo :', font=('Courier', 14), bg='#353535', fg='white', pady=5)
+site_label = tk.Label(frame, text='Site :', font=('Courier', 14), bg='#353535', fg='white', pady=5)
+site_label.grid(column=2, row=2, columnspan=1, padx=3, sticky=tk.W)
+name_label = tk.Label(frame, text='Pseudo :', font=('Courier', 14), bg='#353535', fg='white', pady=5)
 name_label.grid(row=3, column=0, columnspan=3)
-email_label = Label(frame, text='       Email :', font=('Courier', 16), bg='#353535', fg='white', pady=5)
-email_label.grid(row=4, column=1, columnspan=3, padx=3, sticky=W)
-pass_label = Label(frame, text='Mot de passe :', font=('Courier', 14), bg='#353535', fg='white', pady=5)
+email_label = tk.Label(frame, text='       Email :', font=('Courier', 16), bg='#353535', fg='white', pady=5)
+email_label.grid(row=4, column=1, columnspan=3, padx=3, sticky=tk.W)
+pass_label = tk.Label(frame, text='Mot de passe :', font=('Courier', 14), bg='#353535', fg='white', pady=5)
 pass_label.grid(row=5, column=0, columnspan=3, padx=3)
 
 # Create input for login in the frame
-site_entry = Entry(frame, font=('Courier', 14), bg='#353535', fg='white', width=15)
+site_entry = tk.Entry(frame, font=('Courier', 14), bg='#353535', fg='white', width=15)
 site_entry.grid(row=2, column=2, padx=2, columnspan=1, pady=2)
 site_entry.insert(0, 'aucun')
-name_entry = Entry(frame, font=('Courier', 14), bg='#353535', fg='white', width=17)
+name_entry = tk.Entry(frame, font=('Courier', 14), bg='#353535', fg='white', width=17)
 name_entry.grid(row=3, column=2, columnspan=1, padx=2, pady=2)
 name_entry.insert(0, 'aucun')
-email_entry = Entry(frame, font=('Courier', 14), bg='#353535', fg='white', width=30)
+email_entry = tk.Entry(frame, font=('Courier', 14), bg='#353535', fg='white', width=30)
 email_entry.grid(row=4, column=2, columnspan=1, padx=2, pady=2)
 email_entry.insert(0, 'aucun')
-password_entry = Entry(frame, font=('Courier', 14), bg='#353535', fg='white', width=15)
+password_entry = tk.Entry(frame, font=('Courier', 14), bg='#353535', fg='white', width=15)
 password_entry.grid(row=5, column=1, columnspan=4, padx=2, pady=2)
 
 # Create button in the frame
-submit = Button(frame, text='Enregistrer', command=on_submit,font=('Courier', 14), bg='#353535', fg='white')
+submit = tk.Button(frame, text='Enregistrer', command=on_submit,font=('Courier', 14), bg='#353535', fg='white')
 submit.grid(column=1, row=6, columnspan=1,pady=10)
-generate_pass_button = Button(frame, text='Générer mot de passe', command=generate_password, font=('Courier', 14), bg='#353535', fg='white')
+generate_pass_button = tk.Button(frame, text='Générer mot de passe', command=generate_password, font=('Courier', 14), bg='#353535', fg='white')
 generate_pass_button.grid(row=6, column=2, columnspan=2)
 
 # Create label for login list in the frame
-site_label2 = Label(frame, text='Site : ', font=('Courier', 14), bg='#353535', fg='white', pady=10)
+site_label2 = tk.Label(frame, text='Site : ', font=('Courier', 14), bg='#353535', fg='white', pady=10)
 site_label2.grid(row=7, column=0)
-name_label2 = Label(frame, text='Pseudo : ', font=('Courier', 14), bg='#353535', fg='white')
+name_label2 = tk.Label(frame, text='Pseudo : ', font=('Courier', 14), bg='#353535', fg='white')
 name_label2.grid(row=7, column=1)
-email_label2 = Label(frame, text='Email : ', font=('Courier', 14), bg='#353535', fg='white')
+email_label2 = tk.Label(frame, text='Email : ', font=('Courier', 14), bg='#353535', fg='white')
 email_label2.grid(row=7, column=2)
-pass_label2 = Label(frame, text='MDP : ', font=('Courier', 14), bg='#353535', fg='white')
+pass_label2 = tk.Label(frame, text='MDP : ', font=('Courier', 14), bg='#353535', fg='white')
 pass_label2.grid(row=7, column=3)
 
 # Put the frame in the scrollbar canvas
-scrollbar.create_window(0, 0, anchor=N, window=frame)
+scrollbar.create_window(0, 0, anchor=tk.N, window=frame)
 
 # Generates a password when opening the application
 generate_password()
