@@ -21,9 +21,7 @@ user_password = '1234'
 # How to use the script under Linux:
 # 1:
 - Edit the variable "user_password" on line 10 to configure the login password.
-```python
-user_password = '1234'
-```
+```python user_password = '1234' ```
 # 2:
 - Launch the script from a terminal.
 
