@@ -7,7 +7,7 @@ import string
 from random import randint, choice
 
 # Define the access password of this application
-user_password = '020315'
+user_password = '1234'
 folder = 'file/accounts.txt'
 
 # window creation and settings
