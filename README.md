@@ -4,7 +4,7 @@
 
 Application to store identifiers and generate a password
 
-# How to use:
+# How to use the script under Windows:
 # 1:
 - Edit the variable "user_password" on line 10 to configure the login password.
 ```python
@@ -16,6 +16,15 @@ user_password = '1234'
 
 # 3:
 - Start the script by double-clicking on run.bat.
+
+# How to use the script under Linux:
+# 1:
+- Edit the variable "user_password" on line 10 to configure the login password.
+```python
+user_password = '1234'
+```
+# 2:
+- Launch the script from a terminal.
 
 # Functions:
 - Ask for a password when opening the application.
