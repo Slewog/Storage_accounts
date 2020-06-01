@@ -12,7 +12,9 @@ user_password = '1234'
 ```
 
 # 2:
-- Start the script with the python interpreter
+- Update the path of the python interpreter in the file "run.bat".
+
+
 
 # Functions:
 - Ask for a password when opening the application.
