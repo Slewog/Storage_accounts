@@ -169,11 +169,12 @@ class entity_display:
             f = open(folder, 'r')
             lines = f.readlines()
             f.close()
+            
+            login_select = self.site + ',' + self.name + ',' + self.email + ',' + self.password + ',' + '\n'
+            lines.pop(lines.index(login_select))
 
             f = open(folder, "w")
             count = 0
-            login_select = self.site + ',' + self.name + ',' + self.email + ',' + self.password + ',' + '\n'
-            lines.pop(lines.index(login_select))
 
             for line in lines:
                 f.write(line)
