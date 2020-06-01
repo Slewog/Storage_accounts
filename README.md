@@ -7,6 +7,10 @@ Application to store identifiers and generate a password
 # How to use:
 # 1:
 - Edit the variable "user_password" on line 10 to configure the login password.
+```python
+user_password = '1234'
+```
+
 # 2:
 - Start the script with the python interpreter
 
