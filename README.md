@@ -18,5 +18,6 @@ user_password = '1234'
 - Ask for a password when opening the application.
 - Generate a password if necessary.
 - Save the login in an encrypted file.
+- Delete logins that are no longer up to date.
 
 # Developed by Slewog
