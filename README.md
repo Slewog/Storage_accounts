@@ -13,8 +13,7 @@ user_password = '1234'
 
 # 2:
 - Update the path of the python interpreter in the file "run.bat".
-PS : 
-if you don't have python installed, download it here and install it:
+- PS : If you don't have python installed, download it here and install it: https://www.python.org/downloads/windows/
 
 # 3:
 - Start the script by double-clicking on run.bat.
