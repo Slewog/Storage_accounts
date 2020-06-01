@@ -13,7 +13,7 @@ folder = 'file/accounts.txt'
 # window creation and settings
 window = Tk()
 window.withdraw()
-window.title('Stockage de compte')
+window.title('Stockage d\'identifiants')
 window.geometry("975x650")
 window.config(background='#353535')
 window.resizable(width=False, height=True)
