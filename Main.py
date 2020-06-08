@@ -111,8 +111,10 @@ class Application(tk.Tk):  # Application creation.
         canvas.configure(scrollregion=canvas.bbox("all"))
 
     def clear_login_file(self):  # Clean the login file.
-        f = open(self.folder, "w")
-        f.close()
+        answer = tkinter.messagebox.askquestion('Supprimer', 'Etes_vous sûr de vouloir vidé votre liste d\'identifiants ?')  # Request confirmation.
+        if answer == 'yes':
+            Login_display.clear_login_file(self.login_frame)
+            read_file_login(self.login_frame, self)
 
 
 class Login_display:  # Decrypt the login list and display it in table form.
@@ -188,6 +190,12 @@ class Login_display:  # Decrypt the login list and display it in table form.
             update_login.extend([self.decryptedS, self.decryptedN, self.decryptedE, self.decryptedP])
             update_login_select.extend([self.login_select])
             Manage_login(self.screen, self.window, "edit")  # partial(Manage_login, window, self.window, "edit")
+
+    def clear_login_file(self):
+        for i in objects:
+            i.destroy()
+        f = open(file, 'w')
+        f.close()
 
     def delete(self):  # Delete the line requested by the user from the file
         answer = tkinter.messagebox.askquestion('Supprimer', 'Etes_vous sûr de vouloir supprimer se login ?')  # Request confirmation.
@@ -362,7 +370,6 @@ class Manage_login:
             read_file_login(self.frame, self.window)
             self.login_manage.destroy()
             self.window.deiconify()  # Displays the main window.
-            tk.messagebox.showinfo('Modification login', 'Login modifié avec succès: \n' + 'Site: ' + site + '\nPseudo: ' + name + '\nEmail: ' + email + '\nMot de passe: ' + pswd)
 
 
 class Login_update:
@@ -423,7 +430,7 @@ class Login_update:
         read_file_login(self.frame, self.window)
         if check_delete:
             Options.Write_log(" LOGIN UPDATE !!! Vous avez modifier l'identifiants du site: " + self.site_update + ", avec le pseudo: '" + self.name_update + "'.")
-            tk.messagebox.showinfo('Modification identifiant', 'L\'identifiants du site "' + self.site_update + "', avec le pseudo: '" + self.name_update + '" à bien été modifier.')  # Displays an info window to confirm the deletion.
+            tk.messagebox.showinfo('Modification login', 'Login modifié avec succès: \n' + 'Site: ' + self.site_update + '\nPseudo: ' + self.name_update + '\nEmail: ' + self.email_update + '\nMot de passe: ' + self.pswd_update)  # Displays an info window to confirm the deletion.
 
 
 class Login_add:  # Encrypt the login and backup it to a file.
