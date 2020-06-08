@@ -16,7 +16,7 @@ class Connect_window(object):  # Login pop-up with password.
         self.file_password = "password.txt"
         self.save_folder = "file/backup"  # Destination file for saving identifiers.
         self.save_file_rename = "accounts_" + self.date_formatting(time.localtime()) + ".txt"  # File name once saved.
-        if not os.path.exists(self.save_folder):  # If the security folder does not exist, it is created.
+        if not os.path.exists(self.save_folder):  # If the backup folder does not exist, it is created.
             os.mkdir(self.save_folder)
         self.number_file = len(os.listdir(self.save_folder))
         self.title_text = 'Accounts Storage - Page de connexion'  # Popup settings.
