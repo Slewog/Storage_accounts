@@ -1,1 +1,1 @@
-C:\Users\tibs-\AppData\Local\Programs\Python\Python38\python.exe Main.py
+C:\INDICATE\THE-\PATH\OF\THE\Python\INTERPRETER\python.exe Main.py
